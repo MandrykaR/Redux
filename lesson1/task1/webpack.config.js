@@ -8,7 +8,7 @@ module.exports = (_, argv) => {
   const isProduction = argv.mode === 'production';
 
   const config = {
-    entry: './src/index.jsx',
+    entry: './src/index.js',
     output: {
       filename: 'bundle.js',
     },
@@ -38,9 +38,9 @@ module.exports = (_, argv) => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
       }),
-      new CopyPlugin({
-        patterns: [{ from: '_redirects', to: '' }],
-      }),
+      // new CopyPlugin({
+      //   patterns: [{ from: '_redirects', to: '' }],
+      // }),
     ],
     devServer: {
       historyApiFallback: true,
