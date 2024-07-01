@@ -4,8 +4,6 @@ import { UserContext } from './user-context';
 class UserMenu extends Component {
   render() {
     const userData = this.context;
-    console.log(userData);
-
     return (
       <div className="menu">
         <span className="menu__greeting">{userData.name}</span>
