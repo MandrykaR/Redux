@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       userData: {
         name: 'Nikola Tesla',
-        avatarUrl: 'https://avatars3.githubusercontent.com/u/10001',
+        avatar_url: 'https://avatars3.githubusercontent.com/u/10001',
       },
     };
   }
