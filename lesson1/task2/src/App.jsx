@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { UserContext } from './user-context';
 import Header from './Header.jsx';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
