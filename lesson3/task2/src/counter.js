@@ -1,16 +1,21 @@
+// src/counter.js
+
 import { createStore } from 'redux';
 
+// Типы действий
 export const INCREMENT = 'COUNTER/INCREMENT';
 export const DECREMENT = 'COUNTER/DECREMENT';
 
-export const increment = () => {
-  return { type: INCREMENT };
-};
+// Action creators
+export const increment = () => ({
+  type: INCREMENT,
+});
 
-export const decrement = () => {
-  return { type: DECREMENT };
-};
+export const decrement = () => ({
+  type: DECREMENT,
+});
 
+// Редуктор
 export const counterReducer = (state = 0, action) => {
   switch (action.type) {
     case INCREMENT:
@@ -22,6 +27,7 @@ export const counterReducer = (state = 0, action) => {
   }
 };
 
+// Создание store с подключением Redux DevTools
 export const store = createStore(
   counterReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
