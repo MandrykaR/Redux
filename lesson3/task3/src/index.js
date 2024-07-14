@@ -8,3 +8,4 @@ store.subscribe(() => {
 });
 
 store.dispatch(addProduct());
+store.dispatch(setLanguage('pl'));
