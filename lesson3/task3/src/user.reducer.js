@@ -16,7 +16,7 @@ const usersReducer = (state = initialState, action) => {
     case REMOVE_USER: {
       return {
         ...state,
-        user: [],
+        user: null,
       };
     }
 
