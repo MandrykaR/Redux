@@ -9,8 +9,17 @@ export const appReducer = combineReducers({
   cart: cartReducer,
 });
 
+const initialState = {
+  language: 'en',
+  user: null,
+  cart: {
+    products: [],
+  },
+};
+
 const store = createStore(
   appReducer,
+  initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
