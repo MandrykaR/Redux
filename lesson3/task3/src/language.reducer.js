@@ -9,7 +9,7 @@ const languageReducer = (state = initialState, action) => {
     case CURRENT__LANGUAGE: {
       return {
         ...state,
-        language: [action.payload],
+        language: action.payload,
       };
     }
     default:
