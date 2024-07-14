@@ -1,7 +1,8 @@
-import { SET_USER, REMOVE_USER } from './user.actions';
+export const SET_USER = 'SET_USER';
+export const REMOVE_USER = 'REMOVE_USER';
 
 const initialState = {
-  currentUser: null,
+  user: null,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -9,13 +10,13 @@ const usersReducer = (state = initialState, action) => {
     case SET_USER:
       return {
         ...state,
-        currentUser: action.payload,
+        user: action.payload,
       };
 
     case REMOVE_USER:
       return {
         ...state,
-        currentUser: null,
+        user: null,
       };
 
     default:
