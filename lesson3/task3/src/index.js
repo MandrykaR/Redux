@@ -7,8 +7,6 @@ store.subscribe(() => {
   console.log(store.getState());
 });
 
-store.dispatch(setLanguage('en'));
-
 store.dispatch(addProduct({ id: 1, name: 'Ann' }));
 store.dispatch(addProduct({ id: 2, name: 'Ron' }));
 store.dispatch(addProduct({ id: 3, name: 'Dob' }));

@@ -1,7 +1,7 @@
 import { CURRENT__LANGUAGE } from './language.actions';
 
 const initialState = {
-  currentLanguage: 'en',
+  language: 'en',
 };
 
 const languageReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const languageReducer = (state = initialState, action) => {
     case CURRENT__LANGUAGE: {
       return {
         ...state,
-        currentLanguage: [action.payload],
+        language: [action.payload],
       };
     }
     default:
