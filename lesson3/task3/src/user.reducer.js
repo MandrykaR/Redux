@@ -1,7 +1,7 @@
 import { SET_USER, REMOVE_USER } from './user.actions';
 
 const initialState = {
-  currentUser: [],
+  currentUser: null,
 };
 
 const usersReducer = (state = initialState, action) => {
