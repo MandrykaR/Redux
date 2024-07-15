@@ -2,7 +2,7 @@ import store from './store';
 
 import { setLanguage } from './language.actions';
 import { addProduct } from './cart.actions';
-import { setUser } from './user.actions';
+import { setUser, removeUser } from './user.actions';
 
 store.subscribe(() => {
   console.log(store.getState());
@@ -10,4 +10,4 @@ store.subscribe(() => {
 
 store.dispatch(addProduct());
 store.dispatch(setLanguage('pl'));
-store.dispatch(setUser({ id: 1, name: 'Non' }));
+store.dispatch(setUser({ name: 'Non' }));
