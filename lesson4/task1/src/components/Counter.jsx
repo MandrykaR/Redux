@@ -30,6 +30,6 @@ const mapDispatch = {
   reset: counterActions.reset,
 };
 
-const connector = connect(mapState, mapDispatch); //HOC
+const connector = connect(mapState, mapDispatch);
 
 export default connector(Counter);
