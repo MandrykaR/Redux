@@ -43,8 +43,8 @@ const UsersList = ({ usersList = [], currentPage = 0, setCurrentPage }) => {
 };
 
 const mapState = (state) => ({
-  usersList: state.users.usersList,
-  currentPage: state.users.currentPage,
+  usersList: state.usersList,
+  currentPage: state.currentPage,
 });
 
 const mapDispatch = {
