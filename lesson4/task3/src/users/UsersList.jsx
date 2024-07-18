@@ -1,22 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Pagination from './Pagination';
-import { setCurrentPage, sortUsers } from './user.actions';
+import { goPrev, goNext } from './user.actions';
 
-const UsersList = ({ usersList = [], currentPage = 0, setCurrentPage }) => {
+const UsersList = ({ usersList = [], currentPage = 0, goPrev, goNext }) => {
   const itemsPerPage = 3;
-
-  const goNext = () => {
-    if (currentPage < Math.ceil(usersList.length / itemsPerPage) - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const goPrev = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
   const startIndex = currentPage * itemsPerPage;
   const visibleUsers = usersList.slice(startIndex, startIndex + itemsPerPage);
@@ -48,8 +36,8 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = {
-  setCurrentPage,
-  sortUsers,
+  goNext,
+  goPrev,
 };
 
 const connector = connect(mapState, mapDispatch);

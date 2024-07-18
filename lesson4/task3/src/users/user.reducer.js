@@ -1,4 +1,4 @@
-import { SORT_USERS, SET_CURRENT_PAGE } from './user.actions';
+import { GO_NEXT, GO_PREV } from './user.actions';
 
 const users = [
   { id: 'id-0', age: 21, name: 'Bob' },
@@ -21,26 +21,16 @@ const initialState = {
 
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SORT_USERS:
-      const { sortBy, sortOrder } = action.payload;
-      const sortedUsers = [...state.usersList].sort((a, b) => {
-        if (a[sortBy] < b[sortBy]) return sortOrder === 'asc' ? -1 : 1;
-        if (a[sortBy] > b[sortBy]) return sortOrder === 'asc' ? 1 : -1;
-        return 0;
-      });
+    case GO_NEXT:
       return {
         ...state,
-        users: {
-          ...state,
-          usersList: sortedUsers,
-        },
+        currentPage: state.currentPage + 1,
       };
-    case SET_CURRENT_PAGE:
+    case GO_PREV:
       return {
         ...state,
-        currentPage: action.payload,
+        currentPage: state.currentPage - 1,
       };
-
     default:
       return state;
   }
