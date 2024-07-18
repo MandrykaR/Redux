@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Pagination from './Pagination';
 import { goPrev, goNext } from './user.actions';
 
-const UsersList = ({ usersList = [], currentPage = 0, goPrev, goNext }) => {
+const UsersList = ({ usersList, currentPage, goPrev, goNext }) => {
   const itemsPerPage = 3;
 
   const startIndex = currentPage * itemsPerPage;
