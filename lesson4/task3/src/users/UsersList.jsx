@@ -40,7 +40,4 @@ const mapDispatch = {
   goPrev,
 };
 
-const connector = connect(mapState, mapDispatch);
-const ConnectedUsers = connector(UsersList);
-
-export default ConnectedUsers;
+export default connect(mapState, mapDispatch)(UsersList);

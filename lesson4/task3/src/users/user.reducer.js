@@ -22,15 +22,23 @@ const initialState = {
 export const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case GO_NEXT:
-      return {
-        ...state,
-        currentPage: state.currentPage + 1,
-      };
+      if (state.currentPage < Math.ceil(state.usersList.length / 3) - 1) {
+        return {
+          ...state,
+          currentPage: state.currentPage + 1,
+        };
+      }
+      return state;
+
     case GO_PREV:
-      return {
-        ...state,
-        currentPage: state.currentPage - 1,
-      };
+      if (state.currentPage > 0) {
+        return {
+          ...state,
+          currentPage: state.currentPage - 1,
+        };
+      }
+      return state;
+
     default:
       return state;
   }
