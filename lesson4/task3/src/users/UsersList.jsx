@@ -42,14 +42,17 @@ const UsersList = ({ usersList = [], currentPage = 0, setCurrentPage }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapState = (state) => ({
   usersList: state.users.usersList,
   currentPage: state.users.currentPage,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   setCurrentPage,
   sortUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
+const connector = connect(mapState, mapDispatch);
+const ConnectedUsers = connector(UsersList);
+
+export default ConnectedUsers;

@@ -5,9 +5,7 @@ import UsersList from './users/UsersList';
 
 const App = () => (
   <Provider store={store}>
-    <div className="app">
       <UsersList />
-    </div>
   </Provider>
 );
 export default App;
