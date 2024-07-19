@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Pagination from './Pagination';
+import User from './User';
 import { goPrev, goNext } from './user.actions';
 
 const UsersList = ({ usersList, currentPage, goPrev, goNext }) => {
@@ -20,10 +21,7 @@ const UsersList = ({ usersList, currentPage, goPrev, goNext }) => {
       />
       <ul className="users">
         {visibleUsers.map((user) => (
-          <li key={user.id} className="user">
-            <span className="user__name">{user.name}</span>
-            <span className="user__age">{user.age}</span>
-          </li>
+          <User key={user.id} name={user.name} age={user.age} />
         ))}
       </ul>
     </div>
