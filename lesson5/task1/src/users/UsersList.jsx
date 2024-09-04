@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Pagination from './Pagination';
-import User from './User';
+import Pagination from './Provider.jsx';
+import User from './Counter.jsx';
 import { goPrev, goNext } from './users.actions';
 import { usersListSelector, currentPageSelector } from './users.selectors.js';
 
