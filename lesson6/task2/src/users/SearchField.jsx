@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getUserData } from './users.gateway';
 
 import * as usersActions from './users.actions';
 
@@ -14,6 +15,9 @@ class SearchField extends Component {
 
   handleUserSearch = () => {
     this.props.showSpinner();
+    getUserData(this.state.userName).then((userData) => {
+      this.props.userDataReceived(userData);
+    });
   };
 
   render() {
@@ -35,6 +39,7 @@ class SearchField extends Component {
 
 const mapDispatch = {
   showSpinner: usersActions.showSpinner,
+  userDataReceived: usersActions.userDataReceived,
 };
 
 export default connect(null, mapDispatch)(SearchField);

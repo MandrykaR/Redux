@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isFetchingSelector } from './users.selectors';
+import { isFetchingSelector, userDataSelector } from './users.selectors';
 import Spinner from './Spinner';
 
 const UserInfo = ({ userData, isFetching }) => {
@@ -29,6 +29,7 @@ const UserInfo = ({ userData, isFetching }) => {
 const mapState = (state) => {
   return {
     isFetching: isFetchingSelector(state),
+    userData: userDataSelector(state),
   };
 };
 
