@@ -11,11 +11,12 @@ const UserInfo = ({ userData, isFetching }) => {
   if (!userData) {
     return null;
   }
+
   return (
     <div className="user">
       <img
         alt="User Avatar"
-        src={userData.avatar_url}
+        src={userData.avatar_url} 
         className="user__avatar"
       />
       <div className="user__info">
@@ -26,11 +27,9 @@ const UserInfo = ({ userData, isFetching }) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    isFetching: isFetchingSelector(state),
-    userData: userDataSelector(state),
-  };
-};
+const mapState = (state) => ({
+  isFetching: isFetchingSelector(state),
+  userData: userDataSelector(state),
+});
 
 export default connect(mapState)(UserInfo);
