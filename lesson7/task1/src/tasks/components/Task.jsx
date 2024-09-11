@@ -1,11 +1,19 @@
 import React from 'react';
 
-const Task = () => {
+const Task = ({ id, done, text, onChange, onDelete }) => {
   return (
-    <li className="list-item list-item_done">
-      <input type="checkbox" className="list-item__checkbox" />
-      Lear HTML / CSS
-      <button className="list-item__delete-btn"></button>
+    <li className={`list-item ${done ? 'list-item_done' : 'list-item__text'} `}>
+      <input
+        type="checkbox"
+        className="list-item__checkbox"
+        checked={done}
+        onChange={() => onChange(id)}
+      />
+      {text}
+      <button
+        className="list-item__delete-btn"
+        onClick={() => onDelete(id)}
+      ></button>
     </li>
   );
 };
