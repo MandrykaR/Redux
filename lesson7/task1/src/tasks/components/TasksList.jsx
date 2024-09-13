@@ -2,7 +2,8 @@ import React from 'react';
 import Task from './Task';
 
 const TasksList = ({ tasks, handleTaskStatusChange, handleTaskDelete }) => {
-  const sortedList = tasks.slice().sort((a, b) => a - b);
+  const sortedList = tasks.slice().sort((a, b) => b - a);
+
   return (
     <ul className="list">
       {sortedList.map((task) => (

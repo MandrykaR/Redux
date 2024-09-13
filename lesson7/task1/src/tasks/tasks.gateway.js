@@ -38,5 +38,5 @@ export const deleteTask = async (taskId) => {
   return await response.json();
 };
 
-export const getTaskList = () =>
+export const fetchTaskList = () =>
   fetch(baseUrl).then((response) => response.json());
