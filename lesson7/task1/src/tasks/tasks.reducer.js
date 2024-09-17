@@ -1,7 +1,7 @@
 import { TASK_LIST_RECEIVED } from './tasks.actions';
 
 const initialState = {
-  tasks: [],
+  tasksList: [],
 };
 
 const tasksReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const tasksReducer = (state = initialState, action) => {
     case TASK_LIST_RECEIVED:
       return {
         ...state,
-        tasks: action.payload.tasksList,
+        tasksList: action.payload.tasksList,
       };
 
     default:

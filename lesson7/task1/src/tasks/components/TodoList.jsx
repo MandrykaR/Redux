@@ -1,30 +1,14 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CreateTaskInput from './CreateTaskInput';
 import TasksList from './TasksList';
-import {
-  createTask,
-  deleteTask,
-  getTaskList,
-  updateTask,
-} from '../tasks.gateway';
+import { createTask, deleteTask, updateTask } from '../tasks.gateway.js';
+import * as tasksAction from '../tasks.actions';
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tasks: [],
-    };
-  }
-
   componentDidMount() {
-    this.fetchTasksList();
+    this.props.getListTask();
   }
-
-  fetchTasksList = () => {
-    getTaskList().then((tasksList) => {
-      this.setState({ tasks: tasksList });
-    });
-  };
 
   handleTaskStatusChange = (id) => {
     const { tasks } = this.state;
@@ -34,11 +18,11 @@ class TodoList extends Component {
       done: !task.done,
     };
 
-    updateTask(id, updatedTask).then(this.fetchTasksList);
+    updateTask(id, updatedTask).then(this.fetchTaskList);
   };
 
   handleTaskDelete = (id) => {
-    deleteTask(id).then(this.fetchTasksList);
+    deleteTask(id).then(this.fetchTaskList);
   };
 
   handleTaskCreate = (text) => {
@@ -46,7 +30,7 @@ class TodoList extends Component {
       text,
       done: false,
       createDate: new Date().toISOString(),
-    }).then(this.fetchTasksList);
+    }).then(this.fetchTaskList);
   };
 
   render() {
@@ -56,7 +40,7 @@ class TodoList extends Component {
         <main className="todo-list">
           <CreateTaskInput onCreate={this.handleTaskCreate} />
           <TasksList
-            tasks={this.state.tasks}
+            tasks={[]}
             handleTaskStatusChange={this.handleTaskStatusChange}
             handleTaskDelete={this.handleTaskDelete}
           />
@@ -66,4 +50,8 @@ class TodoList extends Component {
   }
 }
 
-export default TodoList;
+const mapDispatch = {
+  getListTask: tasksAction.getListTask,
+};
+
+export default connect(null, mapDispatch)(TodoList);

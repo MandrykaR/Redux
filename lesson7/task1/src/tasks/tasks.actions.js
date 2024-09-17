@@ -13,7 +13,7 @@ export const taskListReceived = (taskList) => {
 
 export const getListTask = (dispatch) => {
   const thunkActions = function () {
-    fetchTaskList().then((taskList) => dispatch(taskListReceived(taskList)));
+    fetchTaskList().then((tasksList) => dispatch(taskListReceived(tasksList)));
   };
 
   return thunkActions;
