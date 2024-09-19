@@ -5,7 +5,7 @@ import tasksReducer from './tasks/tasks.reducer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
-  tasksList: tasksReducer,
+  tasks: tasksReducer,
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));

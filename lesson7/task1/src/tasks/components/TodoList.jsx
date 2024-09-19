@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CreateTaskInput from './CreateTaskInput';
 import TasksList from './TasksList';
-import { createTask, deleteTask, updateTask } from '../tasks.gateway.js';
+import { sortedTaskListSelector } from '../tasks.selectors.js';
 import * as tasksAction from '../tasks.actions';
 
 class TodoList extends Component {
@@ -10,39 +10,16 @@ class TodoList extends Component {
     this.props.getListTask();
   }
 
-  handleTaskStatusChange = (id) => {
-    const { tasks } = this.state;
-    const task = tasks.find((task) => task.id === id);
-    const updatedTask = {
-      ...task,
-      done: !task.done,
-    };
-
-    updateTask(id, updatedTask).then(this.fetchTaskList);
-  };
-
-  handleTaskDelete = (id) => {
-    deleteTask(id).then(this.fetchTaskList);
-  };
-
-  handleTaskCreate = (text) => {
-    createTask({
-      text,
-      done: false,
-      createDate: new Date().toISOString(),
-    }).then(this.fetchTaskList);
-  };
-
   render() {
     return (
       <div id="root">
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
-          <CreateTaskInput onCreate={this.handleTaskCreate} />
+          <CreateTaskInput onCreate={this.props.createTask} />
           <TasksList
-            tasks={[]}
-            handleTaskStatusChange={this.handleTaskStatusChange}
-            handleTaskDelete={this.handleTaskDelete}
+            tasks={this.props.tasks}
+            handleTaskStatusChange={this.props.updateTask}
+            handleTaskDelete={this.props.deleteTask}
           />
         </main>
       </div>
@@ -52,6 +29,15 @@ class TodoList extends Component {
 
 const mapDispatch = {
   getListTask: tasksAction.getListTask,
+  updateTask: tasksAction.updateTask,
+  deleteTask: tasksAction.deleteTask,
+  createTask: tasksAction.createTask,
 };
 
-export default connect(null, mapDispatch)(TodoList);
+const mapState = (state) => {
+  return {
+    tasks: sortedTaskListSelector(state),
+  };
+};
+
+export default connect(mapState, mapDispatch)(TodoList);

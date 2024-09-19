@@ -9,7 +9,7 @@ const tasksReducer = (state = initialState, action) => {
     case TASK_LIST_RECEIVED:
       return {
         ...state,
-        tasksList: action.payload.tasksList,
+        tasksList: action.payload.taskList,
       };
 
     default:
